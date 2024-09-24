@@ -3,6 +3,8 @@ from typing import Callable, List
 
 from calculator.calculation import Calculation
 
+# pylint: disable=unnecessary-dunder-call, invalid-name
+
 class Calculations:
     history: List[Calculation] = []
 

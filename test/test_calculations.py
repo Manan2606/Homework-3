@@ -7,6 +7,8 @@ from calculator.calculations import Calculations
 
 from calculator.operations import add, subtract
 
+# pylint: disable=unnecessary-dunder-call, invalid-name
+
 @pytest.fixture
 def setup_calculations():
     """Clear history and add sample calculations for tests."""
