@@ -4,7 +4,6 @@ import pytest
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
 
-# pylint: disable=unnecessary-dunder-call, invalid-name
 
 def test_operation_add():
     '''Testing the addition operation'''
