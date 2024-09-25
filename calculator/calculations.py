@@ -1,9 +1,14 @@
-from decimal import Decimal
-from typing import Callable, List
+"""
+This module provides a class for managing a history of mathematical calculations.
+It allows for adding new calculations, retrieving the history, clearing the history, 
+and finding calculations by operation name.
+"""
 
+from typing import List
 from calculator.calculation import Calculation
 
 class Calculations:
+    """A class to manage the history of calculations."""  
     history: List[Calculation] = []
 
     @classmethod
