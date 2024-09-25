@@ -1,21 +1,15 @@
-'''
-This Python code defines a Calculator class that provides a simple interface for performing arithmetic operations (addition, subtraction, multiplication, division) on Decimal numbers. The class uses static methods, demonstrating a functional approach within an object-oriented context. 
-Each operation method creates a Calculation object, performs the calculation, adds it to a history of calculations, and then returns the result. 
-Let's break down the code with detailed comments and highlight its design principles.
+"""
+This module defines the Calculator class, which provides basic arithmetic operations (addition, subtraction, multiplication, and division) using the Decimal data type for high-precision arithmetic.
 
-Design Principles Illustrated
-Single Responsibility Principle (SRP): The Calculator class is focused solely on performing calculations using the provided operations. It delegates the responsibility of managing calculation history to the Calculations class, adhering to SRP by having a single reason to change.
+The Calculator class leverages the Calculation class to perform operations and the Calculations class to manage a history of all performed calculations. Each operation is defined as a static method that delegates to a private _perform_operation method.
 
-Don't Repeat Yourself (DRY): The _perform_operation method abstracts the common process of creating a calculation, adding it to the history, and returning the result. This reduces repetition in the operation methods (add, subtract, multiply, divide), each of which only specifies the operation to perform.
-
-Separation of Concerns: The Calculator class separates concerns by handling the calculation logic, while the Calculations class manages the history of calculations. This separation ensures that each class has a distinct responsibility, enhancing maintainability and scalability.
-
-Encapsulation: While not encapsulating in the traditional sense of hiding data within an object, the Calculator class encapsulates the behavior of performing calculations and managing their lifecycle, showcasing functional encapsulation.
-
-Polymorphism: The use of a Callable type hint for the operation parameter in _perform_operation method demonstrates polymorphism. It allows for any function that matches the specified signature to be passed in and executed, showcasing flexibility and reuse.
-
-This code demonstrates effective use of object-oriented and functional programming principles to create a modular, maintainable, and easy-to-use calculator interface.
-'''
+Imports:
+    - decimal.Decimal: For high-precision arithmetic operations.
+    - typing.Callable: For type hinting callable objects.
+    - calculator.calculations.Calculations: Manages the history of all calculations.
+    - calculator.operations: Contains the basic arithmetic operations (add, subtract, multiply, divide).
+    - calculator.calculation.Calculation: Represents a single calculation.
+"""
 
 # Standard imports
 from decimal import Decimal  # For high-precision arithmetic
@@ -32,15 +26,12 @@ class Calculator:
 
     @staticmethod
     # pylint: disable=invalid-name
+    # a (Decimal): The first operand.
+    # b (Decimal): The second operand.
     def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
         """
         Create and perform a calculation, then return the result.
-
-        Args:
-            a (Decimal): The first operand.
-            b (Decimal): The second operand.
-            operation (Callable): A function that takes two Decimal operands and returns a Decimal result.
-
+        operation (Callable): A function that takes two Decimal operands and returns a Decimal result.
         Returns:
             Decimal: The result of the calculation.
         """
@@ -57,10 +48,6 @@ class Calculator:
         """
         Perform addition by delegating to the _perform_operation method with the add operation.
 
-        Args:
-            a (Decimal): The first operand.
-            b (Decimal): The second operand.
-
         Returns:
             Decimal: The result of adding a and b.
         """
@@ -71,10 +58,6 @@ class Calculator:
     def subtract(a: Decimal, b: Decimal) -> Decimal:
         """
         Perform subtraction by delegating to the _perform_operation method with the subtract operation.
-
-        Args:
-            a (Decimal): The first operand.
-            b (Decimal): The second operand.
 
         Returns:
             Decimal: The result of subtracting b from a.
@@ -87,10 +70,6 @@ class Calculator:
         """
         Perform multiplication by delegating to the _perform_operation method with the multiply operation.
 
-        Args:
-            a (Decimal): The first operand.
-            b (Decimal): The second operand.
-
         Returns:
             Decimal: The result of multiplying a and b.
         """
@@ -101,10 +80,6 @@ class Calculator:
     def divide(a: Decimal, b: Decimal) -> Decimal:
         """
         Perform division by delegating to the _perform_operation method with the divide operation.
-
-        Args:
-            a (Decimal): The first operand.
-            b (Decimal): The second operand.
 
         Returns:
             Decimal: The result of dividing a by b.
